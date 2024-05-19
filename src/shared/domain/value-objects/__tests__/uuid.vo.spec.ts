@@ -1,7 +1,11 @@
 import { InvalidUuidError, Uuid } from "../uuid.vo"
 
 describe('Uuid Unit Tests', () => {
-  const validateSpy = jest.spyOn(Uuid.prototype as any, 'validate')
+  let validateSpy: jest.SpyInstance<any, unknown[], any>
+
+  beforeEach(() => {
+    validateSpy = jest.spyOn(Uuid.prototype, 'validate' as any)
+  })
 
   test('should throw error when uuid is invalid', () => {
     expect(() => {
