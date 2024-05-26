@@ -2,6 +2,7 @@ import { Entity } from "../../shared/domain/entity";
 import { EntityValidationError } from "../../shared/domain/validators/validation.error";
 import { ValueObject } from "../../shared/domain/value-object";
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
+import { CategoryFakeBuilder } from "./category-fake.builder";
 import { CategoryValidatorFactory } from "./category.validator";
 
 interface CategoryConstructorProps {
@@ -59,6 +60,10 @@ export class Category extends Entity {
 
   deactivate (): void {
     this.is_active = false;
+  }
+
+  static fake () {
+    return CategoryFakeBuilder;
   }
 
   static validate (entity: Category) {
