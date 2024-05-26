@@ -1,5 +1,5 @@
-import { CategoryFakeBuilder } from '../../domain/category-fake.builder';
-import { Category } from '../../domain/category.entity';
+import { CategoryFakeBuilder } from '../../../domain/category-fake.builder';
+import { Category } from '../../../domain/category.entity';
 import { CategoryInMemoryRepository } from './category-in-memory.repository';
 
 describe('CategoryInMemoryRepository', () => {
