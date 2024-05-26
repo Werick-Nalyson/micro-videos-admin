@@ -86,6 +86,6 @@ export class Category extends Entity {
       description: this.description,
       is_active: this.is_active,
       created_at: this.created_at,
-    }
+    };
   }
 }
