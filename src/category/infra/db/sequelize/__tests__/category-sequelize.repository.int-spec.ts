@@ -9,21 +9,16 @@ import {
 import { Category } from '../../../../domain/category.entity';
 import { Uuid } from '../../../../../shared/domain/value-objects/uuid.vo';
 import { Sequelize } from 'sequelize-typescript';
+import { setupSequelize } from '../../../../../shared/infra/testing/helpers';
 
 describe('CategorySequelizeRepository Integration Test', () => {
-  let sequelize: Sequelize
   let repository: CategorySequelizeRepository;
 
+  setupSequelize({
+    models: [CategoryModel]
+  })
+
   beforeEach(async () => {
-    sequelize = new Sequelize({
-      dialect: 'sqlite',
-      storage: ':memory:',
-      models: [CategoryModel],
-      logging: false
-    })
-
-    await sequelize.sync({ force: true })
-
     repository = new CategorySequelizeRepository(CategoryModel);
   })
 
@@ -163,7 +158,6 @@ describe('CategorySequelizeRepository Integration Test', () => {
       await repository.bulkInsert(categories);
 
       const entities = await repository.findAll()
-      console.log('findAll: ', entities)
 
       // let searchOutput = await repository.search(
       //   new CategorySearchParams({
