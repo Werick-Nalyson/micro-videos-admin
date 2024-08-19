@@ -9,6 +9,7 @@
     "@swc/core": "^1.4.17",
     "@swc/jest": "^0.2.36",
     "@types/chance": "^1.1.6",
+    "@types/dotenv": "^8.2.0",
     "@types/jest": "^29.5.12",
     "@types/sequelize": "^4.28.20",
     "@types/uuid": "^9.0.8",
@@ -19,7 +20,8 @@
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "tsc:check": "tsc --noEmit"
   },
   "dependencies": {
     "class-validator": "0.14.1",
