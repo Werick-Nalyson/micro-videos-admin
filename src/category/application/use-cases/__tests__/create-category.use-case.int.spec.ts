@@ -19,6 +19,7 @@ describe('CreateCategoryUseCase Integration Tests', () => {
     let output = await useCase.execute({ name: 'test' });
 
     let entity = await repository.findById(new Uuid(output.id));
+
     expect(output).toStrictEqual({
       id: entity!.category_id.id,
       name: 'test',
