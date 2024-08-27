@@ -1,19 +1,20 @@
-import { setupSequelize } from '../../../../shared/infra/testing/helpers';
-import { CategoryInMemoryRepository } from '../../../infra/db/in-memory/category-in-memory.repository';
-import { CategoryModel } from '../../../infra/db/sequelize/category.model';
-import { CreateCategoryUseCase } from '../../use-cases/create-category.use-case';
+import { CategoryInMemoryRepository } from "../../../../infra/db/in-memory/category-in-memory.repository";
+import { CreateCategoryUseCase } from "../create-category.use-case";
 
 describe('CreateCategoryUseCase Unit Tests', () => {
   let useCase: CreateCategoryUseCase;
   let repository: CategoryInMemoryRepository;
 
-  setupSequelize({
-    models: [CategoryModel]
-  })
-
   beforeEach(() => {
     repository = new CategoryInMemoryRepository();
     useCase = new CreateCategoryUseCase(repository);
+  });
+
+  it('should throw an error when aggregate is not valid', async () => {
+    const input = { name: 't'.repeat(256) };
+    await expect(() => useCase.execute(input)).rejects.toThrowError(
+      'Entity Validation Error',
+    );
   });
 
   it('should create a category', async () => {
