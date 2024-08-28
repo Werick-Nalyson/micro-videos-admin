@@ -69,7 +69,7 @@ export class CategorySequelizeRepository implements ICategoryRepository {
       return CategoryModelMapper.toEntity(model);
     });
 
-    return categories
+    return categories;
   }
 
   async search(props: CategorySearchParams): Promise<CategorySearchResult> {

@@ -1,5 +1,4 @@
-import { Uuid } from "../../../shared/domain/value-objects/uuid.vo";
-import { Category } from "../category.entity";
+import { Category } from '../category.entity';
 
 // describe("Category Without Validator Unit Tests", () => {
 //   beforeEach(() => {
@@ -152,33 +151,29 @@ import { Category } from "../category.entity";
 //   });
 // });
 
-describe("Category Validator", () => {
-  describe("create command", () => {
-    test("should an invalid category with name property", () => {
-      const category = Category.create({ name: "t".repeat(256) });
+describe('Category Validator', () => {
+  describe('create command', () => {
+    test('should an invalid category with name property', () => {
+      const category = Category.create({ name: 't'.repeat(256) });
 
-      console.log('-------------------------------- NOTIFICATION --------------------------------')
       expect(category.notification.hasErrors()).toBe(true);
-      console.log('-------------------------------- FIM NOTIFICATION --------------------------------')
 
-      console.log('HAS ERRORS', category.notification.hasErrors())
-      console.log('NOFY:', category.notification.toJSON())
       expect(category.notification).notificationContainsErrorMessages([
         {
-          name: ["name must be shorter than or equal to 255 characters"],
+          name: ['name must be shorter than or equal to 255 characters'],
         },
       ]);
     });
   });
 
-  describe("changeName method", () => {
-    it("should a invalid category using name property", () => {
-      const category = Category.create({ name: "Movie" });
-      category.changeName("t".repeat(256));
+  describe('changeName method', () => {
+    it('should a invalid category using name property', () => {
+      const category = Category.create({ name: 'Movie' });
+      category.changeName('t'.repeat(256));
       expect(category.notification.hasErrors()).toBe(true);
       expect(category.notification).notificationContainsErrorMessages([
         {
-          name: ["name must be shorter than or equal to 255 characters"],
+          name: ['name must be shorter than or equal to 255 characters'],
         },
       ]);
     });
