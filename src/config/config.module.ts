@@ -6,7 +6,7 @@ import {
 import Joi from 'joi';
 import { join } from 'path';
 
-export type DB_SCHEMA_TYPE = {
+type DB_SCHEMA_TYPE = {
   DB_VENDOR: 'mysql' | 'sqlite';
   DB_HOST: string;
   DB_PORT: number;
@@ -39,6 +39,8 @@ export const CONFIG_DB_SCHEMA: Joi.StrictSchemaMap<DB_SCHEMA_TYPE> = {
   DB_LOGGING: Joi.boolean().required(),
   DB_AUTO_LOAD_MODELS: Joi.boolean().required(),
 };
+
+export type CONFIG_SCHEMA_TYPE = DB_SCHEMA_TYPE;
 
 @Module({})
 export class ConfigModule extends NestConfigModule {
