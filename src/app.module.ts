@@ -6,9 +6,10 @@ import { getModelToken } from '@nestjs/sequelize';
 import { CategoryModel } from '@core/category/infra/db/sequelize/category.model';
 import { CategorySequelizeRepository } from '@core/category/infra/db/sequelize/category-sequelize.repository';
 import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
-  imports: [DatabaseModule, CategoriesModule],
+  imports: [ConfigModule.forRoot(), DatabaseModule, CategoriesModule],
   controllers: [AppController],
   providers: [
     AppService,
