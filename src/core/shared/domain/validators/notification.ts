@@ -2,14 +2,11 @@ export class Notification {
   errors = new Map<string, string[] | string>();
 
   addError(error: string, field?: string) {
-    console.log('ADD ERROR: ', field, error)
     if (field) {
       const errors = (this.errors.get(field) ?? []) as string[];
       errors.indexOf(error) === -1 && errors.push(error);
       this.errors.set(field, errors);
-      console.log('IF errors: ', this.errors)
     } else {
-      console.log('ELSE')
       this.errors.set(error, error);
     }
   }
@@ -41,7 +38,7 @@ export class Notification {
   toJSON() {
     const errors: Array<string | { [key: string]: string[] }> = [];
     this.errors.forEach((value, key) => {
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         errors.push(value);
       } else {
         errors.push({ [key]: value });
