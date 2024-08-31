@@ -15,7 +15,7 @@ services:
     environment:
       - MYSQL_DATABASE=micro_videos
       - MYSQL_ROOT_PASSWORD=root
-    tmpfs:
-      - /var/lib/mysql
+    volumes:
+      - .docker/dbdata:/var/lib/mysql:delegated
     security_opt:
       - seccomp:unconfined
