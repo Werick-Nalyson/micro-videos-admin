@@ -9,7 +9,7 @@ services:
       - .:/home/node/app
 
   db:
-    platform: linux/x86_64
+    platform: linux/amd64
     image: mysql:8.0.30-debian
     container_name: micro-videos-admin-db
     environment:
@@ -19,3 +19,5 @@ services:
       - .docker/dbdata:/var/lib/mysql:delegated
     security_opt:
       - seccomp:unconfined
+    ports:
+      - 3306:3306

@@ -47,6 +47,9 @@ export class ConfigModule extends NestConfigModule {
   static forRoot(options: ConfigModuleOptions = {}) {
     const { envFilePath, ...otherOptions } = options;
 
+    console.log('MYSQL CONFIG: ');
+    console.log(JSON.stringify(options.load, null, 2));
+
     return super.forRoot({
       isGlobal: true,
       envFilePath: [
