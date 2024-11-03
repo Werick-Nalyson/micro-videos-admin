@@ -34,7 +34,9 @@ export class CategoriesController {
   private deleteCategory: DeleteCategoryUseCase;
 
   @Post()
-  create(@Body() createCategoryDto: CreateCategoryDto) {}
+  create(@Body() createCategoryDto: CreateCategoryDto) {
+    return this.createCategory.execute(createCategoryDto);
+  }
 
   @Get()
   findAll() {}
